@@ -90,7 +90,7 @@ public class Relatorios extends HttpServlet {
             
             
             //Questão 2
-            
+            ////esta dando alum erro 
             List<Object[]> ob; 
             
             out.println("<h2>Consulta 2.A: Quais os nomes das pessoas? Por meio de Query </h>");

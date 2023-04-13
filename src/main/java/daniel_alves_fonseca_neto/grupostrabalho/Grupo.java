@@ -111,7 +111,7 @@ public class Grupo implements Serializable {
 
     @Override
     public String toString() {
-        return "Grupo{" + "id=" + id + ", nome=" + nome + ", ativo=" + ativo + ", lider=" + lider + ", atuacoes=" + atuacoes + '}';
+        return "Grupo{" + "id=" + id + ", nome=" + nome + ", ativo=" + ativo + ", lider=" + lider.getNome() + ", atuacoes=" + atuacoes + '}';
     }
 
    

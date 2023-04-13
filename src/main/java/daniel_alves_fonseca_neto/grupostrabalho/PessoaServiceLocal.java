@@ -29,41 +29,6 @@ public interface PessoaServiceLocal {
 
     List<Object[]> findNomeNamedQuery();
 
-    List<Pessoa> fiindNomeEnderecoQuery();
-
-    List<Object[]> fiindNomeEnderecoTypedQuery();
-
-    List<Object[]> fiindNomeEnderecoNamedQuery();
-
-    List<Object[]> findNomeTelefoneQuery();
-
-    List<Object[]> findNomeTelefoneTypedQuery();
-
-    List<Object[]> findNomeTelefoneNamedQuery();
-
-    List<Pessoa> findPessoaQueMoramEmAvenidaQuery();
-
-    List<Pessoa> findPessoaQueMoramEmAvenidaTypedQuery();
-
-    List<Pessoa> findPessoaQueMoramEmAvenidaNamedQuery();
-
-    List<Pessoa> findPessoasQueNaoMoramEmPracaQuery();
-
-    List<Pessoa> findPessoasQueNaoMoramEmPracaTypedQuery();
-
-    List<Pessoa> findPessoasQueNaoMoramEmPracaNamedQuery();
-
-    List<Pessoa> consulta7ByQuery(LocalDate beginDate, LocalDate endDate);
-
-    List<Pessoa> consulta8AByQuery();
-
-    List<Pessoa> consulta8BByQuery();
-
-    List<Pessoa> consulta9ByQuery();
-
-    List<Pessoa> Consulta10ByQuery();
-
-    List<Pessoa> consulta13ByQuery(String nomeGrupo);
 
 }
 

@@ -110,8 +110,7 @@ public class Atuacao implements Serializable {
 
    @Override
     public String toString() {
-        return "Atuacao{" + "id=" + id + ", inicio=" + inicio
-                + ", termino=" + termino + ", grupo=" + grupo + '}';
+        return "Atuacao{" + "id=" + id + ", inicio=" + inicio + ", termino=" + termino + ", grupo=" + grupo.getNome() + '}';
     }
     
 }

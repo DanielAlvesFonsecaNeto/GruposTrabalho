@@ -29,7 +29,11 @@ import javax.persistence.Transient;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Pessoa.findAll", query = "SELECT p FROM Pessoa p"),
-    @NamedQuery(name = "Pessoa.findNome", query = "SELECT p.nome FROM Pessoa p")
+    @NamedQuery(name = "Pessoa.findNome", query = "SELECT p.nome FROM Pessoa p"),
+    @NamedQuery(name = "Pessoa.findNomeEndereco", query = "SELECT p.nome, p.endereco FROM Pessoa p"),
+    @NamedQuery(name = "Pessoa.findPessoaQueMoramEmAvenida", query = "SELECT p from Pessoa p " + "WHERE p.endereco.tipoLogradouro = 1"),
+    @NamedQuery(name = "Pessoa.findPessoaQueNaoMoramEmPraca", query = "SELECT p from Pessoa p " + "WHERE NOT p.endereco.tipoLogradouro = 2"),
+    @NamedQuery(name = "Pessoa.findNomeTelefones", query = "SELECT p.nome, t FROM Pessoa p JOIN p.telefones t")
 })
 public class Pessoa implements Serializable {
 
@@ -172,7 +176,17 @@ public class Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", nascimento=" + nascimento + ", idade=" + idade + ", endereco=" + endereco + ", telefones=" + telefones + ", atuacoes=" + atuacoes + ", liderancas=" + liderancas + '}';
+        return "Pessoa{" 
+                + "id=" + id 
+                + ", nome=" + nome 
+                + ", email=" + email 
+                + ", nascimento=" + nascimento 
+                + ", idade=" + idade 
+                + ", endereco=" + endereco 
+                + ", telefones=" + telefones 
+                + ", atuacoes=" + atuacoes 
+                + ", liderancas=" + liderancas 
+                + '}';
     }
     //</editor-fold>
 }

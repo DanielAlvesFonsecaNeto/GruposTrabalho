@@ -47,22 +47,103 @@ public class PessoaService implements PessoaServiceLocal {
 
     //<editor-fold defaultstate="collapsed" desc="Consulta 2">
     @Override
-    public List<Object[]> findNomeQuery() {
+    public List<String> findNomeQuery() {
         Query q = entityManager.createQuery("SELECT p.nome FROM Pessoa p");
-        return (List<Object[]>) q.getResultList();
+        return (List<String>) q.getResultList();
     }
 
     @Override
-    public List<Object[]> findNomeTypedQuery() {
-        TypedQuery q = entityManager.createQuery("SELECT p.nome FROM Pessoa p", Object[].class);
+    public List<String> findNomeTypedQuery() {
+        TypedQuery q = entityManager.createQuery("SELECT p.nome FROM Pessoa p", String.class);
         return q.getResultList();
     }
 
     @Override
-    public List<Object[]> findNomeNamedQuery() {
-        return entityManager.createNamedQuery("Pessoa.findNome", Object[].class).getResultList();
+    public List<String> findNomeNamedQuery() {
+        return entityManager.createNamedQuery("Pessoa.findNome", String.class).getResultList();
     }
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 3">
+    @Override
+    public List<Object[]> fiindNomeEnderecoQuery() {
+        Query q = entityManager.createQuery("SELECT p.nome, p.endereco FROM Pessoa p");
+        return (List<Object[]>) q.getResultList();
+    }
 
+    @Override
+    public List<Object[]> fiindNomeEnderecoTypedQuery() {
+        TypedQuery q = entityManager.createQuery("SELECT p.nome, p.endereco FROM Pessoa p", Object[].class);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Object[]> fiindNomeEnderecoNamedQuery() {
+        return entityManager.createNamedQuery("Pessoa.findNomeEndereco", Object[].class).getResultList();
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 4">
+    @Override
+    public List<Pessoa> findPessoaQueMoramEmAvenidaQuery() {
+
+        Query q = entityManager.createQuery("SELECT p from Pessoa p "
+                + "WHERE p.endereco.tipoLogradouro = 1");
+        return (List<Pessoa>) q.getResultList();
+    }
+
+    @Override
+    public List<Pessoa> findPessoaQueMoramEmAvenidaTypedQuery() {
+        TypedQuery q = entityManager.createQuery("SELECT p from Pessoa p "
+                + "WHERE p.endereco.tipoLogradouro = 1", Pessoa.class);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Pessoa> findPessoaQueMoramEmAvenidaNamedQuery() {
+        return entityManager.createNamedQuery("Pessoa.findPessoaQueMoramEmAvenida", Pessoa.class).getResultList();
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 5">
+    @Override
+    public List<Pessoa> findPessoasQueNaoMoramEmPracaQuery() {
+        Query q = entityManager.createQuery("SELECT p from Pessoa p "
+                + "WHERE NOT p.endereco.tipoLogradouro = 2");
+        return (List<Pessoa>) q.getResultList();
+    }
+
+    @Override
+    public List<Pessoa> findPessoasQueNaoMoramEmPracaTypedQuery() {
+        TypedQuery q = entityManager.createQuery("SELECT p from Pessoa p "
+                + "WHERE NOT p.endereco.tipoLogradouro = 2", Pessoa.class);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Pessoa> findPessoasQueNaoMoramEmPracaNamedQuery() {
+        return entityManager.createNamedQuery("Pessoa.findPessoaQueNaoMoramEmPraca", Pessoa.class).getResultList();
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 6">
+    @Override
+    public List<Object[]> findNomeTelefoneQuery() {
+        Query q = entityManager.createQuery("SELECT p.nome, t FROM Pessoa p "
+                + "JOIN p.telefones t");
+        return (List<Object[]>) q.getResultList();
+    }
+
+    @Override
+    public List<Object[]> findNomeTelefoneTypedQuery() {
+        TypedQuery q = entityManager.createQuery("SELECT p.nome, t FROM Pessoa p JOIN p.telefones t ", Object[].class);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Object[]> findNomeTelefoneNamedQuery() {
+        return entityManager.createNamedQuery("Pessoa.findNomeTelefones", Object[].class).getResultList();
+    }
+    //</editor-fold>
     
 }

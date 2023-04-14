@@ -64,61 +64,203 @@ public class Relatorios extends HttpServlet {
             
             List<Pessoa> pl;
             
-            out.println("<h2>Consulta 1.A: Quais as pessoas (dados completos) cadastradas? Por meio de Query </h>");
-            out.println("<ul>");
+            out.println("<h2 style=\"color: red;\">     Q1 - Quais as pessoas (dados completos) cadastradas?</h>");
+            out.println("<h3 style=\"color: blue;\">Por meio de Query </h>");
+            out.println("<ul style=\"color: green;\">");
             pl = pessoaService.findAllPessoaQuerry();
             for (Pessoa p : pl) {
-                out.println("<li>" + p + "</li>");
+                out.println("<li style=\"color: green;\">" + p + "</li><br>");
             }
             out.println("</ul>");
 
-            out.println("<h2>Consulta 1.B: Quais as pessoas (dados completos) cadastradas? Por meio de TypedQuery </h>");
-            out.println("<ul>");
+            out.println("<h3 style=\"color: blue;\">Por meio de TypedQuery </h>");
+            out.println("<ul style=\"color: green;\">");
             pl = pessoaService.findAllPessoaTypedQuery();
             for (Pessoa p : pl) {
-                out.println("<li>" + p + "</li>");
+                out.println("<li style=\"color: green;\">" + p + "</li><br>");
             }
             out.println("</ul>");
             
-            out.println("<h2>Consulta 1.C: Quais as pessoas (dados completos) cadastradas? Por meio de NamedQuery </h>");
-            out.println("<ul>");
+            out.println("<h3 style=\"color: blue;\">Por meio de NamedQuery </h>");
+            out.println("<ul style=\"color: green;\">");
             pl = pessoaService.findAllPessoaNamedQuery();
             for (Pessoa p : pl) {
-                out.println("<li>" + p + "</li>");
+                out.println("<li style=\"color: green;\">" + p + "</li><br>");
             }
             out.println("</ul>");
             
             
             //Questão 2
-            ////esta dando alum erro 
-            List<Object[]> ob; 
             
-            out.println("<h2>Consulta 2.A: Quais os nomes das pessoas? Por meio de Query </h>");
-            out.println("<ul>");
-            ob = pessoaService.findNomeQuery();
-            for (Object[] o : ob) {
-                out.println("<li>" + o[1] + "</li>");
+            List<String> str; 
+            
+            out.println("<h2 style=\"color: red;\">     Q2 - Quais os nomes das pessoas? </h>");
+            out.println("<h3 style=\"color: blue;\">Por meio de Query </h>");
+            out.println("<ul style=\"color: green;\">");
+            str = pessoaService.findNomeQuery();
+            for (String o : str) {
+                out.println("<li style=\"color: green;\">" + o + "</li><br>");
             }
             out.println("</ul>");
             
-            out.println("<h2>Consulta 2.B: Quais os nomes das pessoas? Por meio de TypedQuery </h>");
-            out.println("<ul>");
-            ob = pessoaService.findNomeTypedQuery();
-            for (Object[] o : ob) {
-                out.println("<li>" + o[0] + "</li>");
+            out.println("<h3 style=\"color: blue;\">Por meio de TypedQuery </h>");
+            out.println("<ul style=\"color: green;\">");
+            str = pessoaService.findNomeTypedQuery();
+            for (String o : str) {
+                out.println("<li style=\"color: green;\">" + o + "</li><br>");
             }
             out.println("</ul>");
             
-            out.println("<h2>Consulta 2.C: Quais os nomes das pessoas? Por meio de NamedQuery </h>");
-            out.println("<ul>");
-            ob = pessoaService.findNomeNamedQuery();
-            for (Object[] o : ob) {
-                out.println("<li>" + o[0] + "</li>");
+            out.println("<h3 style=\"color: blue;\">Por meio de NamedQuery </h>");
+            out.println("<ul style=\"color: green;\">");
+            str = pessoaService.findNomeNamedQuery();
+            for (String o : str) {
+                out.println("<li style=\"color: green;\">" + o + "</li><br>");
             }
             out.println("</ul>");
             
+            
+            
+            //Questão 3
+            
+            
+            List<Object[]> obQ3;
+            
+            out.println("<h2 style=\"color: red;\">     Q3 - Quais as pessoas (nome) e seus respectivos endereços (dados completos)? </h>");
+            out.println("<h3 style=\"color: blue;\">Por meio de Query </h>");
+            out.println("<ul style=\"color: green;\">");
+            obQ3 = pessoaService.fiindNomeEnderecoQuery();
+            
+            for (Object[] o : obQ3) {
+                
+                out.println("<li style=\"color: green;\"> nome : " + o[0] + " endereco :  " + o[1] + "</li><br>");
+            }
+            out.println("</ul>");
+            
+            out.println("<h3 style=\"color: blue;\">Por meio de TypedQuery </h>");
+            out.println("<ul style=\"color: green;\">");
+            obQ3 = pessoaService.fiindNomeEnderecoTypedQuery();
+            
+            for (Object[] o : obQ3) {
+                
+                out.println("<li style=\"color: green;\"> nome : " + o[0] + " endereco :  " + o[1] + "</li><br>");
+            }
+            out.println("</ul>");
+          
+            
+            out.println("<h3 style=\"color: blue;\">Por meio de NamedQuery </h>");
+            out.println("<ul style=\"color: green;\">");
+            obQ3 = pessoaService.fiindNomeEnderecoNamedQuery();
+            
+            for (Object[] o : obQ3) {
+                
+                out.println("<li style=\"color: green;\"> nome : " + o[0] + " endereco :  " + o[1] + "</li><br>");
+            }
+            out.println("</ul>");
+            
+            
+            
+            //Questão 4
+            
+            
+            out.println("<h2 style=\"color: red;\">     Q4 - Quais pessoas (dados completos) moram em avenidas?</h>");
+            out.println("<h3 style=\"color: blue;\">Por meio de Query </h>");
+            out.println("<ul style=\"color: green;\">");
+            pl = pessoaService.findPessoaQueMoramEmAvenidaQuery();
+            for (Pessoa p : pl) {
+                out.println("<li style=\"color: green;\">" + p + "</li><br>");
+            }
+            out.println("</ul>");
+
+            out.println("<h3 style=\"color: blue;\">Por meio de TypedQuery </h>");
+            out.println("<ul style=\"color: green;\">");
+            pl = pessoaService.findPessoaQueMoramEmAvenidaTypedQuery();
+            for (Pessoa p : pl) {
+                out.println("<li style=\"color: green;\">" + p + "</li><br>");
+            }
+            out.println("</ul>");
+            
+            out.println("<h3 style=\"color: blue;\">Por meio de NamedQuery </h>");
+            out.println("<ul style=\"color: green;\">");
+            pl = pessoaService.findPessoaQueMoramEmAvenidaNamedQuery();
+            for (Pessoa p : pl) {
+                out.println("<li style=\"color: green;\">" + p + "</li><br>");
+            }
+            out.println("</ul>");
+            
+            
+            
+            //Questão 5
+            
+            
+            out.println("<h2 style=\"color: red;\">     Q5 - Quais pessoas (dados completos) não moram em praças?</h>");
+            out.println("<h3 style=\"color: blue;\">Por meio de Query </h>");
+            out.println("<ul style=\"color: green;\">");
+            pl = pessoaService.findPessoasQueNaoMoramEmPracaQuery();
+            for (Pessoa p : pl) {
+                out.println("<li style=\"color: green;\">" + p + "</li><br>");
+            }
+            out.println("</ul>");
+
+            out.println("<h3 style=\"color: blue;\">Por meio de TypedQuery </h>");
+            out.println("<ul style=\"color: green;\">");
+            pl = pessoaService.findPessoasQueNaoMoramEmPracaTypedQuery();
+            for (Pessoa p : pl) {
+                out.println("<li style=\"color: green;\">" + p + "</li><br>");
+            }
+            out.println("</ul>");
+            
+            out.println("<h3 style=\"color: blue;\">Por meio de NamedQuery </h>");
+            out.println("<ul style=\"color: green;\">");
+            pl = pessoaService.findPessoasQueNaoMoramEmPracaNamedQuery();
+            for (Pessoa p : pl) {
+                out.println("<li style=\"color: green;\">" + p + "</li><br>");
+            }
+            out.println("</ul>");
+            
+          
+            
+            //Questão 6
+            
+            
+            List<Object[]> obQ6;
+            
+            out.println("<h2 style=\"color: red;\">     Q6 - Quais os nomes das pessoas e seus respectivos telefones (dados completos)? </h>");
+            out.println("<h3 style=\"color: blue;\">Por meio de Query </h>");
+            out.println("<ul style=\"color: green;\">");
+            obQ6 = pessoaService.findNomeTelefoneQuery();
+            
+            for (Object[] o : obQ6) {
+                
+                out.println("<li style=\"color: green;\"> nome : " + o[0] + " Telefone : " + o[1] + " </li><br>");
+            }
+            out.println("</ul>");
+            
+            out.println("<h3 style=\"color: blue;\">Por meio de TypedQuery </h>");
+            out.println("<ul style=\"color: green;\">");
+            obQ6 = pessoaService.findNomeTelefoneTypedQuery();
+            
+            for (Object[] o : obQ6) {
+                
+                out.println("<li style=\"color: green;\"> nome : " + o[0] + " Telefone : " + o[1] + " </li><br>");
+            }
+            out.println("</ul>");
+          
+            
+            out.println("<h3 style=\"color: blue;\">Por meio de NamedQuery </h>");
+            out.println("<ul style=\"color: green;\">");
+            obQ6 = pessoaService.findNomeTelefoneNamedQuery();
+            
+            for (Object[] o : obQ6) {
+                
+                out.println("<li style=\"color: green;\"> nome : " + o[0] + " Telefone : " + o[1] + " </li><br>");
+            }
+            out.println("</ul>");
 
 
+            
+            
+            
             out.println("</body>");
             out.println("</html>");
 

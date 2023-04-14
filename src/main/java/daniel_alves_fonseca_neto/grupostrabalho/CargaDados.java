@@ -21,7 +21,7 @@ import javax.inject.Inject;
 public class CargaDados implements CargaDadosLocal {
 
     @Inject
-    private PessoaServiceLocal pessoaService;
+    private ConsultaServiceLocal consultaService;
 
     
     
@@ -254,9 +254,9 @@ public class CargaDados implements CargaDadosLocal {
         p2.getLiderancas().add(g4);
         p3.getLiderancas().add(g3);
 
-        pessoaService.save(p1);
-        pessoaService.save(p2);
-        pessoaService.save(p3);
-        pessoaService.save(p4);
+        consultaService.save(p1);
+        consultaService.save(p2);
+        consultaService.save(p3);
+        consultaService.save(p4);
     }
 }

@@ -17,7 +17,7 @@ import javax.persistence.TypedQuery;
  * @author DER
  */
 @Stateless
-public class PessoaService implements PessoaServiceLocal {
+public class ConsultaService implements ConsultaServiceLocal {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -218,6 +218,81 @@ public class PessoaService implements PessoaServiceLocal {
     
     //<editor-fold defaultstate="collapsed" desc="Consulta 15">
     
+    @Override
+    public List<Object[]> consulta15(String nomeMembro) {
+        Query q = entityManager.createQuery("SELECT g.nome,a.inicio,a.termino FROM Grupo g JOIN g.atuacoes a  WHERE a.pessoa.nome=:nomeMembro").setParameter("nomeMembro", nomeMembro);
+        return (List<Object[]>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 16">
+    
+    @Override
+    public List<Grupo> consulta16(String str) {
+        Query q = entityManager.createQuery("SELECT g FROM Grupo g WHERE g.nome LIKE :str ").setParameter("str", '%' + str + '%');
+        return (List<Grupo>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 17">
+    
+    @Override
+    public List<Object[]> consulta17() {
+        Query q = entityManager.createQuery("SELECT g.nome,count(DISTINCT a.pessoa) FROM Grupo g JOIN g.atuacoes a GROUP BY g");
+        return (List<Object[]>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 18">
+    
+    @Override
+    public List<Object[]> consulta18(long qtd) {
+        Query q = entityManager.createQuery("SELECT g.nome, COUNT(a.id) FROM Grupo g JOIN g.atuacoes a GROUP BY g HAVING COUNT(a.id) >= :qtd").setParameter("qtd", qtd);
+        return (List<Object[]>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 19">
+    
+    @Override
+    public List<String> consulta19(String nomeGrupo, LocalDate data) {
+        Query q = entityManager.createQuery("SELECT DISTINCT a.pessoa.nome FROM Grupo g JOIN g.atuacoes a WHERE g.nome =:nomeGrupo AND a.inicio>=: data").setParameter("nomeGrupo", nomeGrupo).setParameter("data", data);
+        return (List<String>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 20">
+    
+    @Override
+    public List<Object[]> consulta20(LocalDate data) {
+        Query q = entityManager.createQuery("SELECT g.nome, a.pessoa.nome, a.inicio FROM Grupo g JOIN g.atuacoes a WHERE a.inicio>=:data ORDER BY g.nome").setParameter("data", data);
+        return (List<Object[]>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 21">
+    
+    @Override
+    public List<Object[]> consulta21() {
+        Query q = entityManager.createQuery("SELECT g.nome, a.pessoa.nome FROM Grupo g JOIN g.atuacoes a WHERE a.termino IS NULL");
+        return (List<Object[]>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 22">
+    
+    @Override
+    public List<Object[]> consulta22() {
+        Query q = entityManager.createQuery("SELECT g.nome, g.lider.nome, a.pessoa.nome FROM Grupo g JOIN g.atuacoes a ORDER BY g.nome, g.lider.nome, a.pessoa.nome");
+        return (List<Object[]>) q.getResultList();
+    }
     
     //</editor-fold>
     

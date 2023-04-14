@@ -13,84 +13,98 @@ import javax.ejb.Local;
  * @author DER
  */
 @Local
-public interface PessoaServiceLocal {
+public interface ConsultaServiceLocal {
 
+    /// usei a palavra consultaService pois usei buca por grupos e pessoas , entao achei que faria mais sentido
     void save(Pessoa pessoa);
     
-    //Consulta 01 
+    //////Consulta 01 
     List<Pessoa> findAllPessoaQuerry();
     
-    //Consulta 01
     List<Pessoa> findAllPessoaTypedQuery();
-    
-    //Consulta 01
+   
     List<Pessoa> findAllPessoaNamedQuery();
     
-    //Consulta 02
+    //////Consulta 02
     List<String> findNomeQuery();
     
-    //Consulta 02
     List<String> findNomeTypedQuery();
     
-    //Consulta 02
     List<String> findNomeNamedQuery();
     
-    //Consulta 03
+    //////Consulta 03
     List<Object[]> fiindNomeEnderecoQuery();
     
-    //Consulta 03
     List<Object[]> fiindNomeEnderecoTypedQuery();
     
-    //Consulta 03
     List<Object[]> fiindNomeEnderecoNamedQuery();
     
-    //Consulta 04
+    //////Consulta 04
     List<Pessoa> findPessoaQueMoramEmAvenidaQuery();
     
-    //Consulta 04
     List<Pessoa> findPessoaQueMoramEmAvenidaTypedQuery();
     
-    //Consulta 04
     List<Pessoa> findPessoaQueMoramEmAvenidaNamedQuery();
     
-    //Consulta 05
+    //////Consulta 05
     List<Pessoa> findPessoasQueNaoMoramEmPracaQuery();
     
-    //Consulta 05
     List<Pessoa> findPessoasQueNaoMoramEmPracaTypedQuery();
     
-    //Consulta 05
     List<Pessoa> findPessoasQueNaoMoramEmPracaNamedQuery();
     
-    //Consulta 06
+    //////Consulta 06
     List<Object[]> findNomeTelefoneQuery();
     
-    //Consulta 06
     List<Object[]> findNomeTelefoneTypedQuery();
     
-    //Consulta 06
     List<Object[]> findNomeTelefoneNamedQuery();
     
-    //Consulta 07
+    //////Consulta 07
     List<Pessoa> consulta7(LocalDate beginDate, LocalDate endDate);
     
-    //Consulta 09
+    ////// Consulta 08 , Professor falou que nao precisa !!
+    
+    //////Consulta 09
     List<Pessoa> consulta9();
     
-    //Consulta 10
+    //////Consulta 10
     List<Object[]> consulta10();
     
-    //Consulta 11
+    //////Consulta 11
     List<Grupo> findGruposNaoAtivos();
     
-    //Consulta 12
+    //////Consulta 12
     List<Object[]> findLiderENomeGrupo();
     
-    //Consulta 13
+    //////Consulta 13
     List<String> consulta13(String nomeGrupo);
     
-    //Consulta 14
+    //////Consulta 14
     List<Grupo> consulta14(String nomeLider);
-
+    
+    //////Consulta 15
+    List<Object[]> consulta15(String nomeMembro);
+    
+    //////Consulta 16
+    List<Grupo> consulta16(String str);
+    
+    //////Consulta 17
+    List<Object[]> consulta17();
+    
+    //////Consulta 18
+    List<Object[]> consulta18(long qtd);
+    
+    //////Consulta 19
+    List<String> consulta19(String nomeGrupo, LocalDate data);
+    
+    //////Consulta 20
+    List<Object[]> consulta20(LocalDate data);
+    
+    //////Consulta 21
+    List<Object[]> consulta21();
+    
+    //////Consulta 22
+    List<Object[]> consulta22();
 }
 

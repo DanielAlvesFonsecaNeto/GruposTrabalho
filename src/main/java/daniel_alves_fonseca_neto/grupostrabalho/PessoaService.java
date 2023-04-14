@@ -146,4 +146,79 @@ public class PessoaService implements PessoaServiceLocal {
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Consulta 7">
+    
+    @Override
+    public List<Pessoa> consulta7(LocalDate beginDate, LocalDate endDate) {
+        Query q = entityManager.createQuery("SELECT p FROM Pessoa p WHERE p.nascimento BETWEEN :beginDate AND :endDate").setParameter("beginDate", beginDate).setParameter("endDate", endDate);
+        return (List<Pessoa>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 9">
+    
+    @Override
+    public List<Pessoa> consulta9() {
+        Query q = entityManager.createQuery("SELECT p FROM Pessoa p WHERE p.telefones IS EMPTY");
+        return (List<Pessoa>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 10">
+    
+    @Override
+    public List<Object[]> consulta10() {
+        Query q = entityManager.createQuery("SELECT p.nome, count(t.id) FROM Pessoa p, IN (p.telefones) t GROUP BY p.nome");
+        return (List<Object[]>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 11">
+    
+    @Override
+    public List<Grupo> findGruposNaoAtivos() {
+        Query q = entityManager.createQuery("SELECT g FROM Grupo g WHERE g.ativo=false");
+        return (List<Grupo>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 12">
+    
+    @Override
+    public List<Object[]> findLiderENomeGrupo() {
+        Query q = entityManager.createQuery("SELECT g.nome, l.nome FROM Grupo g JOIN g.lider l");
+        return (List<Object[]>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 13">
+    
+    @Override
+    public List<String> consulta13(String nomeGrupo) {
+        Query q = entityManager.createQuery("SELECT p.nome FROM Pessoa p JOIN p.atuacoes a WHERE a.grupo.nome =:nomeGrupo ORDER BY p.nome DESC").setParameter("nomeGrupo", nomeGrupo);
+        return (List<String>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 14">
+    
+    @Override
+    public List<Grupo> consulta14(String nomeLider) {
+        Query q = entityManager.createQuery("SELECT g FROM Grupo g JOIN g.lider l WHERE l.nome=: nomeLider").setParameter("nomeLider", nomeLider);
+        return (List<Grupo>) q.getResultList();
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Consulta 15">
+    
+    
+    //</editor-fold>
+    
 }

@@ -260,6 +260,114 @@ public class Relatorios extends HttpServlet {
 
             
             
+            //Questão 7
+            
+            out.println("<h2 style=\"color: red;\">     Q7 - Quais as pessoas (dados completos) que nasceram entre abril de 2001 e abril de 2004?</h>");
+            out.println("<h3 style=\"color: blue;\">Por meio de Query </h>");
+            out.println("<ul style=\"color: green;\">");
+            pl = pessoaService.consulta7(LocalDate.of(2001, Month.APRIL, 1), LocalDate.of(2004, Month.APRIL, 30));
+            for (Pessoa p : pl) {
+                out.println("<li style=\"color: green;\">" + p + "</li><br>");
+            }
+            out.println("</ul>");
+            
+
+            
+            
+            //Questão 8
+            
+            out.println("<h2 style=\"color: red;\">     Q8 - Quais as pessoas (dados completos) que nasceram entre abril de 2001 e abril de 2004?</h>");
+            out.println("<h3 style=\"color: red;\"><br>Professor falou que não precisa fazer !!!<br><br><br><br></h>");
+            
+            
+
+            
+            
+            //Questão 9
+            
+            out.println("<h2 style=\"color: red;\">     Q9 - Quais pessoas (dados completos) não possuem telefone?</h>");
+            out.println("<h3 style=\"color: blue;\">Por meio de Query </h>");
+            out.println("<ul style=\"color: green;\">");
+            pl = pessoaService.consulta9();
+            for (Pessoa p : pl) {
+                out.println("<li style=\"color: green;\">" + p + "</li><br>");
+            }
+            out.println("</ul>");
+            
+
+            
+            
+            //Questão 10
+            
+            List<Object[]> obQ10;
+            
+            out.println("<h2 style=\"color: red;\">     Q10 - Quantos telefones cada pessoa (nome) tem?</h>");
+            out.println("<h3 style=\"color: blue;\">Por meio de Query </h>");
+            out.println("<ul style=\"color: green;\">");
+            obQ10 = pessoaService.consulta10();
+            for (Object[] o : obQ10) {
+                out.println("<li style=\"color: green;\">" + o[0] +" ---> : " +o[1] + " telefones </li><br>");
+            }
+            out.println("</ul>");
+            
+
+            
+            
+            //Questão 11
+            
+            List<Grupo> gl;
+            
+            out.println("<h2 style=\"color: red;\">     Q11 - Quais grupos (dados completos) não estão ativos?</h>");
+            out.println("<h3 style=\"color: blue;\">Por meio de Query </h>");
+            out.println("<ul style=\"color: green;\">");
+            gl = pessoaService.findGruposNaoAtivos();
+            for (Grupo g : gl) {
+                out.println("<li style=\"color: green;\">" + g + "</li><br>");
+            }
+            out.println("</ul>");
+            
+
+            
+            //Questão 12
+            
+            List<Object[]> obQ12;
+            
+            out.println("<h2 style=\"color: red;\">     Q12 - Quais são os líderes (nomes) dos grupos (nomes)? </h>");
+            out.println("<h3 style=\"color: blue;\">Por meio de Query </h>");
+            out.println("<ul style=\"color: green;\">");
+            obQ12 = pessoaService.findLiderENomeGrupo();
+            for (Object[] o : obQ12) {
+                out.println("<li style=\"color: green;\"> Grupo : " + o[0] + " , Lider : "+ o[1] +"</li><br>");
+            }
+            out.println("</ul>");
+            
+            
+            //Questão 13
+            
+            out.println("<h2 style=\"color: red;\">     Q13 - Quais são os membros (nomes) do grupo com nome \"Estudo IV\" com ordenação alfabética inversa?</h>");
+            out.println("<h3 style=\"color: blue;\">Por meio de Query </h>");
+            out.println("<ul style=\"color: green;\">");
+            str = pessoaService.consulta13("Estudo IV");
+            for (String s : str) {
+                out.println("<li style=\"color: green;\">" + s + "</li><br>");
+            }
+            out.println("</ul>");
+            
+
+            
+            
+            //Questão 14
+            
+            out.println("<h2 style=\"color: red;\">     Q14 - Quais são os grupos (dados completos) liderados por \"Beatriz Yana\"?</h>");
+            out.println("<h3 style=\"color: blue;\">Por meio de Query </h>");
+            out.println("<ul style=\"color: green;\">");
+            gl = pessoaService.consulta14("Beatriz Yana");
+            for (Grupo g : gl) {
+                out.println("<li style=\"color: green;\">" + g + "</li><br>");
+            }
+            out.println("</ul>");
+            
+            
             
             out.println("</body>");
             out.println("</html>");
